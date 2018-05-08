@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Final Project</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form name="SignInForm" class="register-form" action="/reg" onsubmit="return validateForm1()" method="post">
+                <p>
+                    <input type="text" id="username" name="name" placeholder="Name" value="" />
+                    <span id="errorName">    </span>
+                </p>
+                <p>
+                    <input type="email" id="email" name="email" placeholder="Your Email" autocomplete="off" />
+                    <span id="errorEmail">    </span>
+                </p>
+                </p>
+                <input type="date" id="dob" name="dob" placeholder="Birthday" />
+                <span id="errorBirthday">    </span>
+                <p>
+                    <p>
+                        <input type="text" id="address" name="address" placeholder="Address" />
+                        <span id="errorAddress">    </span>
+                    </p>
+                    <p>
+                        <input type='tel' id="phonenumber" name="phonenumber" pattern="(\+84|0)\d{9,10}" title="vietnam: +84xxxxxxxx. or 0xxxxxxxxx." placeholder="Phone Number" />
+                        <span id="errorPhone">    </span>
+                    </p>
+                    <p>
+                        <input type="password" id="password" name="password" placeholder="New Password" />
+                        <span id="errorPass">    </span>
+                        
+                    </p>
+                    <p>
+                        <input type="number" id="keylength" name="keylength" placeholder="RSA length" />
+                        <span id="errorRSA">    </span>
+                    </p>
+
+                    <button>create</button>
+                    <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+            <form name="LogInForm" class="login-form" action="/log" onsubmit="return validateForm()" method="post">
+                <input type="email" name="email" placeholder="email" />
+                <span id="errorUser">    </span>
+                <input type="password" name="password" placeholder="password" />
+                <span id="errorPass">    </span>
+
+                <button id="myBtn">login</button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        
+
+        function validateForm() {
+            var result = true;
+            var username = document.forms["LogInForm"]["email"].value;
+            if (username == "") {
+                document.getElementById('errorUser').innerHTML="this is an invalid username"; 
+                result = false;
+            }
+
+            var password = document.forms["LogInForm"]["password"].value;
+            if (password == "") {
+                document.getElementById('errorPass').innerHTML="this is an invalid password"; 
+                result = false;
+            }
+
+            return result;
+        }
+
+        function validateForm1() {
+            var result = true;
+            var username = document.forms["SignInForm"]["name"].value;
+            if (username == "") {
+                document.getElementById('errorName').innerHTML="this is an invalid name"; 
+                result = false;
+            }
+
+            var email = document.forms["SignInForm"]["email"].value;
+            if (email == "") {
+                document.getElementById('errorEmail').innerHTML="this is an invalid email"; 
+                result = false;
+            }
+
+            var address = document.forms["SignInForm"]["address"].value;
+            if (address == "") {
+                document.getElementById('errorAddress').innerHTML="this is an invalid address"; 
+                result = false;
+            }
+
+            var birthday = document.forms["SignInForm"]["dob"].value;
+            if (birthday == "") {
+                document.getElementById('errorBirthday').innerHTML="this is an invalid birthday"; 
+                result = false;
+            }
+
+            var phone = document.forms["SignInForm"]["phonenumber"].value;
+            if (phone == "") {
+                document.getElementById('errorPhone').innerHTML="this is an invalid phone"; 
+                result = false;
+            }
+
+            var password = document.forms["SignInForm"]["password"].value;
+            if (password == "") {
+                document.getElementById('errorPass').innerHTML="this is an invalid password"; 
+                result = false;
+            }
+
+            var keylength = document.forms["SignInForm"]["keylength"].value;
+            if (keylength == "") {
+                document.getElementById('errorRSA').innerHTML="this is an invalid keylength"; 
+                result = false;
+            }
+
+            return result;
+        }
+    </script>
+    <script src='js/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>

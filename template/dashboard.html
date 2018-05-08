@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Final Project</title>
+    <link rel="stylesheet" href="css/styledashboard.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav role="navigation">
+            <ul>
+                <li>
+                    <a href="/dashboard" class="tablinks">
+
+                            Home
+                            <div>
+
+                                <a href="/logout">
+                                Logout
+                                </a>
+                    </div>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="tablinks" onclick="openLink(event, 'Update')">
+                        <div>
+                            Update Information
+                            <!--<span>put something here</span>-->
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="tablinks" onclick="openLink(event, 'ExportImport')">
+                        <div>
+                            Export Import RSA
+                            <!--<span>put something here</span>-->
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="tablinks" onclick="openLink(event, 'Crypt')">
+                        <div>
+                            Encrypt Decrypt File
+                            <!--<span>put something here</span>-->
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="tablinks" onclick="openLink(event, 'Sign')">
+                        <div>
+                            Signature Validate
+                            <!--<span>put something here</span>-->
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div id="Crypt" class="tabcontent">
+        <br>
+        <form class="form" enctype="multipart/form-data" method="post" action="/dashboard/fileencrypt">
+            <input type="file" name="userencrypt">
+            <button type="submit"> Encrypt </button>
+        </form>
+        <form class="form" enctype="multipart/form-data" method="post" action="/dashboard/filedecrypt">
+            <input type="file" name="userdecrypt">
+            <button type="submit"> Decypt </button>
+        </form>
+
+    </div>
+
+    <div id="Update" class="tabcontent">
+        <form class="form" action="/dashboard/update" method="post">
+            <p>
+                <input type="text" id="username" name="name" placeholder="Name" value="" />
+            </p>
+            <p>
+                <input type="email" id="email" name="email" placeholder="Your Email" autocomplete="off" />
+            </p>
+            <p>
+                <input type="date" id="dob" name="dob" placeholder="Birthday" />
+            </p>
+            <p>
+                <input type="text" id="address" name="address" placeholder="Address" />
+            </p>
+            <p>
+                <input type='tel' id="phonenumber" name="phonenumber" pattern="(\+84|0)\d{9,10}" title="vietnam: +84xxxxxxxx. or 0xxxxxxxxx." placeholder="Phone Number" />
+            </p>
+            <p>
+                <input type="number" id="keylength" name="keylength" placeholder="RSA length" />
+            </p>
+            <p>
+                <input type="password" id="password" name="password" placeholder="New Password" />
+            </p>
+            <p>
+                <input type="password" name="oldpassword" placeholder="Old Password" />
+            </p>
+            <button>Update</button>
+        </form>
+    </div>
+
+    <div id="ExportImport" class="tabcontent">
+        <br>
+        <form class="form" method="get" action="dashboard/export">
+            <button type="submit"> Export </button>
+        </form>
+        <form class="form" enctype="multipart/form-data" method="post" action="/dashboard/import">
+            <input type="file" name="userimport">
+            <button type="submit"> Import </button>
+        </form>
+    </div>
+
+    <div id="Sign" class="tabcontent">
+        <br>
+        <form class="form" enctype="multipart/form-data" method="post" action="/dashboard/filesign">
+            <input type="file" name="usersign">
+            <button type="submit"> Sign </button>
+        </form>
+        <form class="form" enctype="multipart/form-data" method="post" action="/dashboard/fileverify">
+            <input type="file" name="fileuserverify">
+            <input type="file" name="siguserverify">
+            <button type="submit"> Verify </button>
+        </form>
+
+    </div>
+    <script>
+        function openLink(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+
+</body>
+
+</html>
