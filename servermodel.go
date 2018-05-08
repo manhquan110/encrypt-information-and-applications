@@ -4,15 +4,10 @@ import (
 	"fmt"
 	"html/template"
 	"io/ioutil"
-	//"net"
 	"net/http"
 	"os"
-	//"os/exec"
 	"os/signal"
 	"time"
-	//"path/filepath"
-	//"runtime"
-	//"strings"
 )
 
 type Server struct {
